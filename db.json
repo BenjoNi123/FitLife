@@ -1,0 +1,308 @@
+{
+  "meals": [
+    {
+      "food": "test1",
+      "calories": "250",
+      "protein": "25",
+      "carbs": "22",
+      "fats": "5",
+      "date": "2020-06-22",
+      "id": 1
+    },
+    {
+      "food": "test1",
+      "calories": "455",
+      "protein": "70",
+      "carbs": "35",
+      "fats": "40",
+      "date": "2020-06-21",
+      "id": 3
+    },
+    {
+      "food": "test1",
+      "calories": "11",
+      "protein": "11",
+      "carbs": "11",
+      "fats": "11",
+      "date": "2020-06-26",
+      "id": 4
+    },
+    {
+      "food": "test3",
+      "calories": "2000",
+      "protein": "25",
+      "carbs": "25",
+      "fats": "25",
+      "date": "2020-06-26",
+      "id": 5
+    },
+    {
+      "food": "test1",
+      "calories": "255",
+      "protein": "22",
+      "carbs": "22",
+      "fats": "22",
+      "date": "2020-06-29",
+      "id": 7
+    },
+    {
+      "food": "test1",
+      "calories": "255",
+      "protein": "25",
+      "carbs": "25",
+      "fats": "25",
+      "date": "2020-06-29",
+      "id": 8
+    },
+    {
+      "food": "test1",
+      "calories": "25",
+      "protein": "52",
+      "carbs": "25",
+      "fats": "25",
+      "date": "2020-06-29",
+      "id": 9
+    },
+    {
+      "food": "test1",
+      "calories": "255",
+      "protein": "25",
+      "carbs": "25",
+      "fats": "25",
+      "date": "2020-06-15",
+      "id": 10
+    },
+    {
+      "food": "pizza",
+      "calories": "350",
+      "protein": "10",
+      "carbs": "40",
+      "fats": "30",
+      "date": "2020-07-01",
+      "id": 11
+    },
+    {
+      "food": "mewal2",
+      "calories": "500",
+      "protein": "38",
+      "carbs": "5",
+      "fats": "5",
+      "date": "2020-07-01",
+      "id": 12
+    },
+    {
+      "food": "teear",
+      "calories": "55",
+      "protein": "55",
+      "carbs": "55",
+      "fats": "55",
+      "date": "2020-07-12",
+      "id": 15
+    },
+    {
+      "food": "meal1",
+      "calories": "350",
+      "protein": "52",
+      "carbs": "75",
+      "fats": "12",
+      "date": "2020-08-18",
+      "id": 16
+    },
+    {
+      "food": "meal1",
+      "calories": "255",
+      "protein": "25",
+      "carbs": "55",
+      "fats": "15",
+      "date": "2020-08-20",
+      "id": 17
+    },
+    {
+      "food": "meal1",
+      "calories": "255",
+      "protein": "25",
+      "carbs": "55",
+      "fats": "15",
+      "date": "2020-08-21",
+      "id": 18
+    },
+    {
+      "food": "meal",
+      "calories": "500",
+      "protein": "50",
+      "carbs": "50",
+      "fats": "50",
+      "date": "2020-08-21",
+      "id": 19
+    },
+    {
+      "food": "meal",
+      "calories": "500",
+      "protein": "50",
+      "carbs": "50",
+      "fats": "50",
+      "date": "2020-08-21",
+      "id": 20
+    },
+    {
+      "food": "baba",
+      "calories": "255",
+      "protein": "55",
+      "carbs": "12",
+      "fats": "5",
+      "date": "2020-08-28",
+      "id": 21
+    },
+    {
+      "food": "test2",
+      "calories": "155",
+      "protein": "15",
+      "carbs": "22",
+      "fats": "5",
+      "date": "2020-08-28",
+      "id": 22
+    },
+    {
+      "food": "test1",
+      "calories": "255",
+      "protein": "15",
+      "carbs": "55",
+      "fats": "75",
+      "date": "2020-08-27",
+      "id": 23
+    },
+    {
+      "food": "test2",
+      "calories": "555",
+      "protein": "155",
+      "carbs": "55",
+      "fats": "0",
+      "date": "2020-08-27",
+      "id": 24
+    },
+    {
+      "food": "test",
+      "calories": "155",
+      "protein": "55",
+      "carbs": "5",
+      "fats": "5",
+      "date": "2020-08-27",
+      "id": 25
+    },
+    {
+      "food": "test",
+      "calories": "555",
+      "protein": "15",
+      "carbs": "55",
+      "fats": "55",
+      "date": "2020-08-26",
+      "id": 26
+    },
+    {
+      "food": "zedt",
+      "calories": "352",
+      "protein": "17",
+      "carbs": "12",
+      "fats": "5",
+      "date": "2020-08-26",
+      "id": 27
+    },
+    {
+      "food": "zest",
+      "calories": "525",
+      "protein": "78",
+      "carbs": "65",
+      "fats": "12",
+      "date": "2020-08-25",
+      "id": 28
+    },
+    {
+      "food": "tett",
+      "calories": "314",
+      "protein": "43",
+      "carbs": "34",
+      "fats": "15",
+      "date": "2020-08-25",
+      "id": 29
+    },
+    {
+      "food": "meal1",
+      "calories": "250",
+      "protein": "52",
+      "carbs": "79",
+      "fats": "15",
+      "date": "2020-09-04",
+      "id": 30
+    }
+  ],
+  "userPreferences": [
+    {
+      "username": "test1",
+      "calories": "3500",
+      "protein": "200",
+      "carbs": "150",
+      "fats": "75",
+      "id": 1
+    }
+  ],
+  "Users": [
+    {
+      "username": "test1",
+      "password": "test1",
+      "token": "ae2smc85",
+      "id": 1
+    }
+  ],
+  "motivationQuotes": [
+    {
+      "quote": "The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone who is not a champion.",
+      "owner": "Arnold Schwarzenegger",
+      "id": 1
+    },
+    {
+      "quote": "Success usually comes to those who are too busy to be looking for it.",
+      "owner": "Henry David Thoreau",
+      "id": 2
+    },
+    {
+      "quote": "All progress takes place outside the comfort zone.",
+      "owner": "Michael John Bobak",
+      "id": 3
+    },
+    {
+      "quote": "If you think lifting is dangerous, try being weak. Being weak is dangerous.",
+      "owner": " Bret Contreras",
+      "id": 4
+    },
+    {
+      "quote": "The only place where success comes before work is in the dictionary.",
+      "owner": "Vidal Sassoon",
+      "id": 5
+    },
+    {
+      "quote": "The clock is ticking. Are you becoming the person you want to be?",
+      "owner": " Greg Plitt",
+      "id": 6
+    },
+    {
+      "quote": "Whether you think you can, or you think you can’t, you’re right.",
+      "owner": " Henry Ford",
+      "id": 7
+    },
+    {
+      "quote": "The successful warrior is the average man, with laser-like focus.",
+      "owner": "Bruce Lee",
+      "id": 8
+    },
+    {
+      "quote": "You must expect great things of yourself before you can do them.",
+      "owner": "Michael Jordan",
+      "id": 9
+    },
+    {
+      "quote": "Action is the foundational key to all success.",
+      "owner": " Pablo Picasso",
+      "id": 10
+    }
+  ]
+}
