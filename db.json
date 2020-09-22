@@ -244,16 +244,7 @@
       "id": 31
     }
   ],
-  "userPreferences": [
-    {
-      "username": "test1",
-      "calories": "3000",
-      "protein": "250",
-      "carbs": "150",
-      "fats": "75",
-      "id": 1
-    }
-  ],
+  "userPreferences": [],
   "Users": [
     {
       "username": "test1",

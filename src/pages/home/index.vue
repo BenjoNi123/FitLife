@@ -88,7 +88,8 @@ export default {
   },
 
   created() {
-    this.getMeals(this.getUserPreferences());
+    this.getUserPreferences();
+    this.getMeals();
   },
 
   methods: {
@@ -100,8 +101,15 @@ export default {
       this.$emit("progressUpdate", true);
     },
     async getUserPreferences() {
-      let response = await axios.get("http://localhost:3000/userPreferences/");
+      let response = await axios.get(
+        "http://localhost:3000/userPreferences/?username=" +
+          localStorage.getItem("userName")
+      );
       this.userPreferences = response.data;
+
+      if (this.userPreferences.length < 1) {
+        this.$router.push({ path: `/myprofile` });
+      }
     },
   },
 

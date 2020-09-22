@@ -10,13 +10,28 @@ import Charts from "./pages/charts";
 
 
 Vue.use(VueRouter);
-
+import axios from "axios";
 const router = new VueRouter({
   mode: "history",
   routes: [{
       path: "/",
       name: "home",
       component: Home,
+      // eslint-disable-next-line no-unused-vars
+      async beforeEnter(_to, _from, next) {
+        let response = await axios.get(
+          "http://localhost:3000/userPreferences/?username=" +
+          localStorage.getItem("userName")
+        );
+
+        if (response.data.length < 1) {
+          next({
+            name: `myProfile`
+          });
+        } else {
+          next();
+        }
+      }
     },
 
     {
