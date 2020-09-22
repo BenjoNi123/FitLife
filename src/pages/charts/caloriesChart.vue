@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="hello" ref="chartdiv"></div>
-    <!-- <div v-for="meal in chartData" :key="meal.id">{{ meal.date }}:{{ meal.calories }}</div>-->
   </div>
 </template>
 
@@ -12,10 +11,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_animated);
 export default {
   name: "XYChart",
-  props: ["chartData", "datesBundle"],
-  data() {
-    return {};
-  },
+  props: ["chartData", "datesBundle", "randomMeals", "dataSet"],
   computed: {
     filteredArrayData: function () {
       let newArray = this.chartData.slice();
@@ -34,6 +30,9 @@ export default {
       }
       return result;
     },
+  },
+  beforeDestroy() {
+    am4core.disposeAllCharts();
   },
 
   methods: {
@@ -64,21 +63,27 @@ export default {
       chart.scrollbarX = scrollbarX;
       this.chart = chart;
     },
-    beforeDestroy() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    },
   },
+
   watch: {
+    dataSet(value) {
+      if (value == true) {
+        am4core.disposeAllCharts();
+        this.createChart(this.chartDataEdited);
+      } else this.createChart(this.randomMeals);
+    },
     chartDataEdited(value) {
+      this.createChart(value);
+    },
+    randomMeals(value) {
+      am4core.disposeAllCharts();
       this.createChart(value);
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .hello {
   width: 100%;

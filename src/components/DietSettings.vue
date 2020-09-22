@@ -3,7 +3,7 @@
     <v-row class="headTitle">
       <h1>
         Welcome
-        <b>{{this.loginInfo[0].username}}</b>
+        <b>{{ this.userName }}</b>
       </h1>
       <h3 v-if="preferenceExists === false">
         Please fill the form below with information about your daily preference
@@ -97,11 +97,10 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["loginInfo"],
   data() {
     return {
       preferences: [],
-      username: this.loginInfo[0].username,
+
       calories: "",
       protein: "",
       carbs: "",
@@ -110,6 +109,11 @@ export default {
       preferenceExists: false,
       countUpdate: "",
     };
+  },
+  computed: {
+    userName: function () {
+      return localStorage.getItem("userName");
+    },
   },
 
   methods: {
@@ -121,7 +125,7 @@ export default {
 
     async putData() {
       await axios.put(
-        "http://localhost:3000/userPreferences/?username=" + this.username,
+        "http://localhost:3000/userPreferences/?username=" + this.userName,
         {
           calories: this.calories,
           protein: this.protein,
@@ -134,7 +138,7 @@ export default {
 
     async uploadData() {
       await axios.post("http://localhost:3000/userPreferences/", {
-        username: this.username,
+        username: this.userName,
         calories: this.calories,
         protein: this.protein,
         carbs: this.carbs,
@@ -144,7 +148,7 @@ export default {
     },
     async getPreferences() {
       let response = await axios.get(
-        "http://localhost:3000/userPreferences/?username=" + this.username
+        "http://localhost:3000/userPreferences/?username=" + this.userName
       );
       this.preferences = response.data;
       if (this.preferences.length > 0) {
@@ -152,9 +156,9 @@ export default {
       }
     },
 
-    async dumpData() {
-      await axios.delete(
-        "http://localhost:3000/userPreferences/" + this.loginInfo[0].username
+    dumpData() {
+      axios.delete(
+        "http://localhost:3000/userPreferences/" + this.preferences[0].id
       ),
         (this.preferenceExists = false);
     },

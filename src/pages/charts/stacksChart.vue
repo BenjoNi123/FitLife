@@ -12,7 +12,7 @@ import am4themes_kelly from "@amcharts/amcharts4/themes/kelly";
 am4core.useTheme(am4themes_animated);
 am4core.useTheme(am4themes_kelly);
 export default {
-  props: ["chartData", "datesBundle"],
+  props: ["chartData", "datesBundle", "randomMeals", "dataSet"],
   computed: {
     filteredArrayData: function () {
       let newArray = this.chartData.slice();
@@ -31,6 +31,9 @@ export default {
       }
       return result;
     },
+  },
+  beforeDestroy() {
+    am4core.disposeAllCharts();
   },
   methods: {
     createChart(value) {
@@ -92,14 +95,19 @@ export default {
       //ADD CURSOR
       chart.cursor = new am4charts.XYCursor();
     },
-    beforeDestroy() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    },
   },
   watch: {
+    dataSet(value) {
+      if (value == true) {
+        am4core.disposeAllCharts();
+        this.createChart(this.chartDataEdited);
+      } else this.createChart(this.randomMeals);
+    },
     chartDataEdited(value) {
+      this.createChart(value);
+    },
+    randomMeals(value) {
+      am4core.disposeAllCharts();
       this.createChart(value);
     },
   },

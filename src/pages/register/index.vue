@@ -4,11 +4,21 @@
       Welcome to Register
       <br />PLease fill in your information
     </v-row>
-    <v-alert v-if="error" type="error">Username: {{userName}} is taken</v-alert>
+    <v-alert v-if="error" type="error"
+      >Username: {{ userName }} is taken</v-alert
+    >
     <v-row class="inputRow">
-      <v-text-field label="Username" v-model="userName" @change="error=false"></v-text-field>
+      <v-text-field
+        label="Username"
+        v-model="userName"
+        @change="error = false"
+      ></v-text-field>
 
-      <v-text-field label="Password" v-model="password" type="password"></v-text-field>
+      <v-text-field
+        label="Password"
+        v-model="password"
+        type="password"
+      ></v-text-field>
 
       <v-btn @click="getUsers">Submit</v-btn>
     </v-row>
@@ -24,6 +34,7 @@ export default {
       password: "",
       token: "",
       error: false,
+      apiTest: [],
     };
   },
 
@@ -40,7 +51,9 @@ export default {
       }
     },
     async submitForm() {
-      let token = Math.random().toString(36).substring(2, 10);
+      let token = Math.random()
+        .toString(36)
+        .substring(2, 10);
       this.token = token;
       await axios.post("http://localhost:3000/Users", {
         username: this.userName,
@@ -48,6 +61,8 @@ export default {
         token: this.token,
       });
       localStorage.token = this.token;
+
+      this.$emit("loginInfo", this.userName, this.password);
     },
   },
 };

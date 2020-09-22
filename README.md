@@ -12,18 +12,25 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Install JSON-Server
 
 ```
-npm run build
+npm install -g json-server
 ```
 
-### Lints and fixes files
+### Run JSON-Server
 
 ```
-npm run lint
+json-server --watch db.json
 ```
 
-### Customize configuration
+### Use App
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+Upon running "npm run serve" and "json-server --watch db.json" the app will start to function.
+
+First thing you should do is register an user.
+After that you will be directed to HOME screen where you can ADD MEALS and see your progress for the selected day.
+
+
+```

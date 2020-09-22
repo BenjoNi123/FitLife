@@ -233,13 +233,22 @@
       "fats": "15",
       "date": "2020-09-04",
       "id": 30
+    },
+    {
+      "food": "baba",
+      "calories": "255",
+      "protein": "1",
+      "carbs": "1",
+      "fats": "1",
+      "date": "2020-09-20",
+      "id": 31
     }
   ],
   "userPreferences": [
     {
       "username": "test1",
-      "calories": "3500",
-      "protein": "200",
+      "calories": "3000",
+      "protein": "250",
       "carbs": "150",
       "fats": "75",
       "id": 1
@@ -249,8 +258,14 @@
     {
       "username": "test1",
       "password": "test1",
-      "token": "ae2smc85",
+      "token": "282jua7k",
       "id": 1
+    },
+    {
+      "username": "test2",
+      "password": "test2",
+      "token": "5bph6y6t",
+      "id": 2
     }
   ],
   "motivationQuotes": [

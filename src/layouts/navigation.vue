@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <v-toolbar color="primary" dense>
+  <div class="mainDiv">
+    <v-toolbar color="primary" absolute width="100%" dense>
       <v-toolbar-title>
         Welcome to FitLife
         <span style="margin-left: 32px">
-          <b>{{username}}</b>
+          <b>{{ userName }}</b>
         </span>
       </v-toolbar-title>
 
@@ -37,25 +37,40 @@
 </template>
 <script>
 export default {
-  props: ["loginInfo", "loginStatus"],
   data() {
     return {
-      username: "",
+      userName: "",
     };
   },
+  props: ["loginStatus"],
 
+  computed: {
+    logindata: function () {
+      return localStorage.getItem("login");
+    },
+  },
   methods: {
+    getUsername() {
+      this.userName = localStorage.getItem("userName");
+    },
     logOut() {
-      localStorage.login = false;
+      this.$emit("loggedOut");
+      this.userName = "";
+      localStorage.userName = "";
+      localStorage.removeItem("token");
       this.$router.push({ path: `/login` });
-      this.$emit("loggedOut", localStorage.login);
-      this.username = "";
     },
   },
   watch: {
-    loginInfo() {
-      this.username = this.loginInfo[0].username;
+    loginStatus() {
+      this.getUsername();
     },
   },
 };
 </script>
+
+<style  scoped>
+.mainDiv {
+  padding-bottom: 50px;
+}
+</style>

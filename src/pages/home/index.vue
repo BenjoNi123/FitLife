@@ -1,6 +1,16 @@
 <template>
   <div>
-    <v-alert v-if="!loginStatus" type="error">Please Sign in to see your progress</v-alert>
+    <div v-if="!loginStatus" class="alertClass">
+      <v-alert
+        v-if="!loginStatus"
+        height="10%"
+        width="33%"
+        center
+        prominent
+        shaped
+        type="warning"
+      >Please Log in to see your progress</v-alert>
+    </div>
     <div v-if="loginStatus">
       <v-app class="homeCss">
         <v-container class="containerClass">
@@ -62,12 +72,12 @@ import tableComponent from "../../components/TableComponent";
 import progressComponent from "../../components/ProgressComponent";
 
 export default {
-  props: ["loginStatus"],
   components: {
     newItem,
     tableComponent,
     progressComponent,
   },
+  props: ["loginStatus"],
   data() {
     return {
       meals: [],
@@ -145,6 +155,12 @@ export default {
 }
 .tableCss {
   width: 94vw;
+}
+.alertClass {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {

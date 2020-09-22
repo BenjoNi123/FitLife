@@ -4,7 +4,7 @@
 
     <v-main>
       <v-container class="maincss" fluid>
-        <router-view @loginInfo="checkLogin" :loginInfo="loginInfo" :loginStatus="loginStatus"></router-view>
+        <router-view @loginInfo="checkLogin" :loginStatus="loginStatus"></router-view>
       </v-container>
     </v-main>
   </v-app>
@@ -12,6 +12,16 @@
 
 <script>
 import navigation from "../src/layouts/navigation";
+import axios from "axios";
+
+axios.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers["access-token"] = token;
+  }
+  return config;
+});
+
 export default {
   components: {
     navigation,
@@ -20,23 +30,24 @@ export default {
     return {
       loginInfo: [],
       loginStatus: false,
-
-      //apiTest: [],
     };
   },
-  computed: {
-    myItem: function () {
-      return localStorage.getItem("token");
-    },
+  mounted() {
+    this.loginRefresh();
   },
+
   methods: {
+    loginRefresh() {
+      this.loginStatus = JSON.parse(localStorage.getItem("login"));
+    },
     checkLogin(msg) {
       this.loginInfo = msg;
-      if (this.loginInfo[0].token == this.myItem) {
-        this.$router.push({ path: `/` });
-        this.loginStatus = true;
-        localStorage.login = this.loginStatus;
-      }
+
+      this.$router.push({ path: `/` });
+      this.loginStatus = true;
+      localStorage.login = this.loginStatus;
+      localStorage.userName = this.loginInfo[0].username;
+      localStorage.setItem("token", this.loginInfo[0].token);
     },
     loggedOut() {
       this.loginStatus = false;
