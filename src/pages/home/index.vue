@@ -1,16 +1,5 @@
 <template>
   <div>
-    <div v-if="!loginStatus" class="alertClass">
-      <v-alert
-        v-if="!loginStatus"
-        height="10%"
-        width="33%"
-        center
-        prominent
-        shaped
-        type="warning"
-      >Please Log in to see your progress</v-alert>
-    </div>
     <div v-if="loginStatus">
       <v-app class="homeCss">
         <v-container class="containerClass">
@@ -22,32 +11,44 @@
               <div class="dateRow">
                 <v-menu
                   v-model="menu2"
-                  color="secondary lighten-3"
+                  color="primary lighten-3"
                   :close-on-content-click="false"
                   :nudge-right="40"
                   transition="scale-transition"
                   offset-y
                   min-width="290px"
                 >
-                  <template v-slot:activator="{ on, attrs }" class="dateTemplate">
+                  <template
+                    v-slot:activator="{ on, attrs }"
+                    class="dateTemplate"
+                  >
                     <v-btn
-                      color="secondary lighten-3"
+                      color="primary lighten-2"
+                      dark
                       class="dateTextField"
                       v-model="date"
                       readonly
                       v-bind="attrs"
                       v-on="on"
                       rounded
-                    >Select Date</v-btn>
+                      >Select Date</v-btn
+                    >
                   </template>
-                  <v-date-picker color="secondary lighten-3" v-model="date" @input="menu2 = false"></v-date-picker>
+                  <v-date-picker
+                    color="primary lighten-3"
+                    v-model="date"
+                    @input="menu2 = false"
+                  ></v-date-picker>
                 </v-menu>
               </div>
             </v-col>
           </v-row>
 
           <v-row class="progressRow">
-            <progress-component :meals="meals" :preferences="userPreferences"></progress-component>
+            <progress-component
+              :meals="meals"
+              :preferences="userPreferences"
+            ></progress-component>
           </v-row>
           <v-row>
             <div class="tableComponent">

@@ -4,7 +4,7 @@
     :headers="headers"
     :items="mealsArray"
     sort-by="date"
-    class="tableClass elevation-10 secondary lighten-3"
+    class="tableClass elevation-10 primary lighten-3"
   >
     <template v-slot:top>
       <v-dialog v-model="dialog" max-width="500px">
@@ -17,19 +17,34 @@
             <v-container>
               <v-row>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.food" label="Food"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.food"
+                    label="Food"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.calories"
+                    label="Calories"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.fats" label="Fat (g)"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.fats"
+                    label="Fat (g)"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.carbs"
+                    label="Carbs (g)"
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
+                  <v-text-field
+                    v-model="editedItem.protein"
+                    label="Protein (g)"
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -37,8 +52,8 @@
 
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="secondary lighten-1" text @click="close">Cancel</v-btn>
-            <v-btn color="secondary lighten-1" text @click="save">Save</v-btn>
+            <v-btn color="primary lighten-1" text @click="close">Cancel</v-btn>
+            <v-btn color="primary lighten-1" text @click="save">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -48,7 +63,9 @@
       <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
     </template>
     <template v-slot:no-data>
-      <v-alert class="info lighten-4">You are seeing this because there is no data for this date.</v-alert>
+      <v-alert
+        >You are seeing this because there is no data for this date.</v-alert
+      >
     </template>
   </v-data-table>
 </template>
@@ -163,7 +180,7 @@ export default {
 }
 
 .tableClass tbody tr:nth-of-type(odd) {
-  background-color: #7e99d6;
+  background-color: primary;
 }
 
 .tableClass tr:hover:not(.v-table__expanded__content) {

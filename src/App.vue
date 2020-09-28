@@ -1,17 +1,33 @@
 <template>
-  <v-app>
-    <navigation @loggedOut="loggedOut" :loginInfo="loginInfo" :loginStatus="loginStatus"></navigation>
+  <v-app
+    ><v-app-bar app></v-app-bar>
+    <navigation2
+      @loggedOut="loggedOut"
+      :loginInfo="loginInfo"
+      :loginStatus="loginStatus"
+    ></navigation2>
+
+    <!-- <navigation
+      @loggedOut="loggedOut"
+      :loginInfo="loginInfo"
+      :loginStatus="loginStatus"
+    ></navigation> -->
 
     <v-main>
       <v-container class="maincss" fluid>
-        <router-view @loginInfo="checkLogin" :loginStatus="loginStatus"></router-view>
+        <router-view
+          @loginInfo="checkLogin"
+          :loginStatus="loginStatus"
+        ></router-view>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import navigation from "../src/layouts/navigation";
+//import navigation from "../src/layouts/navigation";
+import navigation2 from "../src/layouts/navigation2";
+
 import axios from "axios";
 
 axios.interceptors.request.use(function (config) {
@@ -24,7 +40,7 @@ axios.interceptors.request.use(function (config) {
 
 export default {
   components: {
-    navigation,
+    navigation2,
   },
   data() {
     return {

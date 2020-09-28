@@ -233,18 +233,18 @@
       "fats": "15",
       "date": "2020-09-04",
       "id": 30
-    },
-    {
-      "food": "baba",
-      "calories": "255",
-      "protein": "1",
-      "carbs": "1",
-      "fats": "1",
-      "date": "2020-09-20",
-      "id": 31
     }
   ],
-  "userPreferences": [],
+  "userPreferences": [
+    {
+      "username": "test1",
+      "calories": "3500",
+      "protein": "250",
+      "carbs": "175",
+      "fats": "90",
+      "id": 1
+    }
+  ],
   "Users": [
     {
       "username": "test1",

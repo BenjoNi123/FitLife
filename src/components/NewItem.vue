@@ -3,7 +3,9 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn class="btnClass" color="secondary lighten-3" dark v-on="on">Add Meal</v-btn>
+        <v-btn class="btnClass" color="primary lighten-2" dark v-on="on"
+          >Add Meal</v-btn
+        >
       </template>
       <v-card>
         <v-card-title>
@@ -13,7 +15,11 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Name*" v-model="foodName" required></v-text-field>
+                <v-text-field
+                  label="Name*"
+                  v-model="foodName"
+                  required
+                ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
@@ -34,10 +40,22 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Carbs" v-model="carbs" hint="cc" type="number" persistent-hint></v-text-field>
+                <v-text-field
+                  label="Carbs"
+                  v-model="carbs"
+                  hint="cc"
+                  type="number"
+                  persistent-hint
+                ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Fats" v-model="fats" hint="cc" type="number" persistent-hint></v-text-field>
+                <v-text-field
+                  label="Fats"
+                  v-model="fats"
+                  hint="cc"
+                  type="number"
+                  persistent-hint
+                ></v-text-field>
               </v-col>
 
               <v-col cols="12">
@@ -59,7 +77,11 @@
                       v-on="on"
                     ></v-text-field>
                   </template>
-                  <v-date-picker color="secondary lighten-3" v-model="date" @input="menu2 = false"></v-date-picker>
+                  <v-date-picker
+                    color="secondary lighten-3"
+                    v-model="date"
+                    @input="menu2 = false"
+                  ></v-date-picker>
                 </v-menu>
               </v-col>
             </v-row>
@@ -67,8 +89,10 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+          <v-btn color="primary darken-1" text @click="dialog = false"
+            >Close</v-btn
+          >
+          <v-btn color="primary darken-1" text @click="save">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

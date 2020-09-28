@@ -10,13 +10,13 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: "#379683",
-        secondary: "#05386B",
-        accent: "#379683",
-        error: "#FC4445",
-        warning: "#AFD275",
-        info: "#03a9f4",
-        success: "#5CDB95",
+        primary: '#005542',
+        secondary: '#424242',
+        accent: '#82B1FF',
+        error: '#FF5252',
+        info: '#2196F3',
+        success: '#4CAF50',
+        warning: '#FFC107',
       },
     },
   },
