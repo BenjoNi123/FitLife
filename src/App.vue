@@ -1,20 +1,20 @@
 <template>
   <v-app
     ><v-app-bar app></v-app-bar>
-    <navigation2
-      @loggedOut="loggedOut"
-      :loginInfo="loginInfo"
-      :loginStatus="loginStatus"
-    ></navigation2>
+    <v-main>
+      <v-container class="maincss" fluid>
+        <navigation2
+          @loggedOut="loggedOut"
+          :loginInfo="loginInfo"
+          :loginStatus="loginStatus"
+        ></navigation2>
 
-    <!-- <navigation
+        <!-- <navigation
       @loggedOut="loggedOut"
       :loginInfo="loginInfo"
       :loginStatus="loginStatus"
     ></navigation> -->
 
-    <v-main>
-      <v-container class="maincss" fluid>
         <router-view
           @loginInfo="checkLogin"
           :loginStatus="loginStatus"

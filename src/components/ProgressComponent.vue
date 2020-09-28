@@ -11,7 +11,8 @@
               :size="circSize"
               :width="circWidth"
               color="white"
-            >{{ proteinVal }}%</v-progress-circular>
+              >{{ proteinVal }}%</v-progress-circular
+            >
           </div>
           <div class="progressCards carbsCard">
             <div class="cardTitle white--text">Carbs</div>
@@ -21,7 +22,8 @@
               :size="circSize"
               :width="circWidth"
               color="white"
-            >{{ carbsVal }}%</v-progress-circular>
+              >{{ carbsVal }}%</v-progress-circular
+            >
           </div>
           <div class="progressCards fatsCard">
             <div class="cardTitle white--text">Fats</div>
@@ -31,16 +33,18 @@
               :size="circSize"
               :width="circWidth"
               color="white"
-            >{{ fatsVal }}%</v-progress-circular>
+              >{{ fatsVal }}%</v-progress-circular
+            >
           </div>
         </v-row>
         <v-row class="progressRow2">
           <v-progress-linear
             class="progressLinear"
-            color="secondary lighten-3"
+            color="primary "
             :height="height"
             :value="calVal"
-          >{{ calVal }}% Calories</v-progress-linear>
+            >{{ calVal }}% Calories</v-progress-linear
+          >
         </v-row>
       </div>
     </div>

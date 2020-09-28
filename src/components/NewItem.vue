@@ -3,9 +3,7 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn class="btnClass" color="primary lighten-2" dark v-on="on"
-          >Add Meal</v-btn
-        >
+        <v-btn large rounded color="primary" dark v-on="on">Add Meal</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -137,8 +135,3 @@ export default {
 };
 </script>
 
-<style>
-.btnClass {
-  border-radius: 16px;
-}
-</style>

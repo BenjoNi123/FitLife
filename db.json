@@ -233,6 +233,15 @@
       "fats": "15",
       "date": "2020-09-04",
       "id": 30
+    },
+    {
+      "food": "testMEak",
+      "calories": "1500",
+      "protein": "130",
+      "carbs": "100",
+      "fats": "70",
+      "date": "2020-09-28",
+      "id": 31
     }
   ],
   "userPreferences": [

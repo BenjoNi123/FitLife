@@ -4,7 +4,7 @@
     :headers="headers"
     :items="mealsArray"
     sort-by="date"
-    class="tableClass elevation-10 primary lighten-3"
+    class="tableClass elevation-10 primary lighten-1"
   >
     <template v-slot:top>
       <v-dialog v-model="dialog" max-width="500px">

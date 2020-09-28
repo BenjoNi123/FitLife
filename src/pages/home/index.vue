@@ -3,17 +3,16 @@
     <div v-if="loginStatus">
       <v-app class="homeCss">
         <v-container class="containerClass">
-          <v-row>
-            <v-col cols="12" sm="6" md="6">
+          <v-row class="firstRow">
+            <v-col lg="4" cols="6" sm="6" md="4">
               <new-item @onSaveComplete="getMeals" class="mt-4"></new-item>
             </v-col>
-            <v-col cols="12" sm="6" md="6">
+            <v-col lg="4" cols="6" sm="6" md="4">
               <div class="dateRow">
                 <v-menu
                   v-model="menu2"
-                  color="primary lighten-3"
+                  color="primary lighten-1"
                   :close-on-content-click="false"
-                  :nudge-right="40"
                   transition="scale-transition"
                   offset-y
                   min-width="290px"
@@ -23,7 +22,8 @@
                     class="dateTemplate"
                   >
                     <v-btn
-                      color="primary lighten-2"
+                      large
+                      color="primary"
                       dark
                       class="dateTextField"
                       v-model="date"
@@ -35,7 +35,7 @@
                     >
                   </template>
                   <v-date-picker
-                    color="primary lighten-3"
+                    color="primary lighten-1"
                     v-model="date"
                     @input="menu2 = false"
                   ></v-date-picker>
@@ -129,7 +129,7 @@ export default {
 
 .firstRow {
   display: flex;
-  max-width: 75vw;
+  max-width: 100vw;
   justify-content: space-around;
 }
 

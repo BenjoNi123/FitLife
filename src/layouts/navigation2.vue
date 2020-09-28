@@ -32,7 +32,7 @@
       app
       v-model="drawer"
       temporary
-      class="indigo"
+      class="primary"
     >
       <v-list
         ><v-list-item
