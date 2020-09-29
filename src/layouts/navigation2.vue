@@ -11,17 +11,17 @@
         <span>Life</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn v-if="loginStatus" color="grey" @click="logOut">
+      <v-btn v-if="loginStatus" @click="logOut">
         <span>Sign Out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
 
-      <v-btn v-if="!loginStatus" to="/login" raised color="grey">
+      <v-btn class="mx-5" v-if="!loginStatus" to="/login">
         <span text--darken-4>Log In</span>
         <v-icon right>mdi-login</v-icon>
       </v-btn>
 
-      <v-btn v-if="!loginStatus" to="/register" raised color="grey">
+      <v-btn v-if="!loginStatus" to="/register">
         <span text--darken-4>Register</span>
         <v-icon right>mdi-account-plus</v-icon>
       </v-btn>

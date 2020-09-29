@@ -242,6 +242,15 @@
       "fats": "70",
       "date": "2020-09-28",
       "id": 31
+    },
+    {
+      "food": "rand",
+      "calories": "2400",
+      "protein": "156",
+      "carbs": "187",
+      "fats": "65",
+      "date": "2020-09-29",
+      "id": 32
     }
   ],
   "userPreferences": [

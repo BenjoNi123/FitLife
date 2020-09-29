@@ -13,16 +13,20 @@
         :datesBundle="datesbundle"
         :chartData="sortedMeals"
       ></stacks-chart>
-      <h2 style="text-align: center">Please pick two dates to filter chart data between them</h2>
+      <h2 style="text-align: center">
+        Please pick two dates to filter chart data between them
+      </h2>
       <v-row class="dataControl">
         <v-col class="buttonClass">
-          <v-btn @click="changeData" color="secondary lighten-3">ORIGINAL DATA</v-btn>
+          <v-btn @click="changeData" color="primary ">ORIGINAL DATA</v-btn>
         </v-col>
         <v-col>
           <date-picker @datesArray="filterArray" :msg="dates"></date-picker>
         </v-col>
         <v-col class="buttonClass">
-          <v-btn @click="randomMealsGenerator" color="secondary lighten-3">RANDOMIZE DATA</v-btn>
+          <v-btn @click="randomMealsGenerator" color="primary "
+            >RANDOMIZE DATA</v-btn
+          >
         </v-col>
       </v-row>
     </div>

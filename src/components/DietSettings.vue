@@ -5,10 +5,10 @@
         Welcome
         <b>{{ this.userName }}</b>
       </h1>
-      <h3 v-if="preferenceExists === false">
+      <p v-if="preferenceExists === false">
         Please fill the form below with information about your daily preference
         of
-      </h3>
+      </p>
     </v-row>
     <v-row class="formrow">
       <v-col class="col1" v-if="preferenceExists === false">
@@ -65,19 +65,27 @@
         <v-row class="scsr">
           <v-card class="cardClass">
             <v-card-title class="titleClass">Calories</v-card-title>
-            <v-card-text class="subClass">Daily limit: {{ preferences[0].calories }}</v-card-text>
+            <v-card-text class="subClass"
+              >Daily limit: {{ preferences[0].calories }}</v-card-text
+            >
           </v-card>
           <v-card class="cardClass proteinCard">
             <v-card-title class="titleClass">Protein</v-card-title>
-            <v-card-text class="subClass">Daily limit: {{ preferences[0].protein }}</v-card-text>
+            <v-card-text class="subClass"
+              >Daily limit: {{ preferences[0].protein }}</v-card-text
+            >
           </v-card>
           <v-card class="cardClass carbsCard">
             <v-card-title class="titleClass">Carbs</v-card-title>
-            <v-card-text class="subClass">Daily limit: {{ preferences[0].carbs }}</v-card-text>
+            <v-card-text class="subClass"
+              >Daily limit: {{ preferences[0].carbs }}</v-card-text
+            >
           </v-card>
           <v-card class="cardClass fatsCard">
             <v-card-title class="titleClass">Fats</v-card-title>
-            <v-card-text class="subClass">Daily limit: {{ preferences[0].fats }}</v-card-text>
+            <v-card-text class="subClass"
+              >Daily limit: {{ preferences[0].fats }}</v-card-text
+            >
           </v-card>
         </v-row>
       </v-col>
@@ -89,7 +97,9 @@
       </h4>
     </v-row>
     <v-row justify="center">
-      <v-btn v-if="preferenceExists" @click="dumpData" color="secondary lighten-3">Erase Data</v-btn>
+      <v-btn v-if="preferenceExists" @click="dumpData" color="primary"
+        >Erase Data</v-btn
+      >
     </v-row>
   </v-app>
 </template>
