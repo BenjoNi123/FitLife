@@ -44,7 +44,7 @@ export default {
       dateAxis.renderer.grid.template.location = 0;
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.title.text = "NUTRIENTS";
+      valueAxis.title.text = "CALORIES";
       valueAxis.tooltip.disabled = true;
       valueAxis.renderer.minWidth = 35;
       let series = chart.series.push(new am4charts.LineSeries());

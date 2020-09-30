@@ -244,22 +244,22 @@
       "id": 31
     },
     {
-      "food": "rand",
+      "food": "randommealtoday",
       "calories": "2400",
-      "protein": "156",
-      "carbs": "187",
+      "protein": "150",
+      "carbs": "89",
       "fats": "65",
-      "date": "2020-09-29",
+      "date": "2020-09-30",
       "id": 32
     }
   ],
   "userPreferences": [
     {
       "username": "test1",
-      "calories": "3500",
+      "calories": "3000",
       "protein": "250",
-      "carbs": "175",
-      "fats": "90",
+      "carbs": "128",
+      "fats": "99",
       "id": 1
     }
   ],

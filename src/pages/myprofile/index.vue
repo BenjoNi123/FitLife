@@ -1,6 +1,5 @@
 <template>
   <v-app class="homeCss">
-    <v-container class="container"></v-container>
     <diet-settings class="homeCss"></diet-settings>
   </v-app>
 </template>

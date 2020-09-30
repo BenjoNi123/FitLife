@@ -58,7 +58,7 @@
         </v-row>
       </v-col>
       <v-col class="col2" v-else-if="preferenceExists === true">
-        <v-row class="scfr">
+        <v-row class="mx-5 px-5 justify-center">
           <h2 class="title">Your daily intake should not exceed following:</h2>
         </v-row>
 
@@ -90,7 +90,7 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row justify="center" v-if="preferenceExists === true">
+    <v-row class="mx-5 px-5 justify-center" v-if="preferenceExists === true">
       <h4>
         If you wish to change your data please click on
         <b>Erase Data</b> button to delete it and then re-enter the data
@@ -217,6 +217,8 @@ export default {
 }
 
 .scfr {
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: center;
