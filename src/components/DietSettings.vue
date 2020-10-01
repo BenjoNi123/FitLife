@@ -10,86 +10,96 @@
         of
       </p>
     </v-row>
-    <v-row class="formrow">
-      <v-col class="col1" v-if="preferenceExists === false">
-        <v-col class="inputCol" cols="12" sm="6" md="6">
-          <v-text-field
-            label="Calories"
-            v-model="calories"
-            hint="kcal"
-            type="number"
-            outlined
-            persistent-hint
-          ></v-text-field>
-        </v-col>
-        <v-col class="inputCol" cols="12" sm="6" md="6">
-          <v-text-field
-            label="Protein"
-            v-model="protein"
-            hint="grams"
-            type="number"
-            outlined
-            persistent-hint
-          ></v-text-field>
-        </v-col>
-        <v-col class="inputCol" cols="12" sm="6" md="6">
-          <v-text-field
-            label="Carbs"
-            v-model="carbs"
-            hint="grams"
-            type="number"
-            outlined
-            persistent-hint
-          ></v-text-field>
-        </v-col>
-        <v-col class="inputCol" cols="12" sm="6" md="6">
-          <v-text-field
-            label="Fat"
-            v-model="fats"
-            hint="grams"
-            type="number"
-            outlined
-            persistent-hint
-          ></v-text-field>
-        </v-col>
+    <v-form ref="form">
+      <v-container>
+        <v-row class="formrow">
+          <v-col class="col1" v-if="preferenceExists === false">
+            <v-col class="inputCol" cols="12" sm="6" md="6">
+              <v-text-field
+                :rules="inputRules"
+                label="Calories"
+                v-model="calories"
+                hint="kcal"
+                type="number"
+                outlined
+                persistent-hint
+              ></v-text-field>
+            </v-col>
+            <v-col class="inputCol" cols="12" sm="6" md="6">
+              <v-text-field
+                :rules="inputRules"
+                label="Protein"
+                v-model="protein"
+                hint="grams"
+                type="number"
+                outlined
+                persistent-hint
+              ></v-text-field>
+            </v-col>
+            <v-col class="inputCol" cols="12" sm="6" md="6">
+              <v-text-field
+                :rules="inputRules"
+                label="Carbs"
+                v-model="carbs"
+                hint="grams"
+                type="number"
+                outlined
+                persistent-hint
+              ></v-text-field>
+            </v-col>
+            <v-col class="inputCol" cols="12" sm="6" md="6">
+              <v-text-field
+                :rules="inputRules"
+                label="Fat"
+                v-model="fats"
+                hint="grams"
+                type="number"
+                outlined
+                persistent-hint
+              ></v-text-field>
+            </v-col>
 
-        <v-row justify="center">
-          <v-btn @click="postOrPatch">Submit</v-btn>
-        </v-row>
-      </v-col>
-      <v-col class="col2" v-else-if="preferenceExists === true">
-        <v-row class="mx-5 px-5 justify-center">
-          <h2 class="title">Your daily intake should not exceed following:</h2>
-        </v-row>
+            <v-row justify="center">
+              <v-btn @click="postOrPatch">Submit</v-btn>
+            </v-row>
+          </v-col>
+          <v-col class="col2" v-else-if="preferenceExists === true">
+            <v-row class="mx-5 px-5 justify-center">
+              <h2 class="title">
+                Your daily intake should not exceed following:
+              </h2>
+            </v-row>
 
-        <v-row class="scsr">
-          <v-card class="cardClass">
-            <v-card-title class="titleClass">Calories</v-card-title>
-            <v-card-text class="subClass"
-              >Daily limit: {{ preferences[0].calories }}</v-card-text
-            >
-          </v-card>
-          <v-card class="cardClass proteinCard">
-            <v-card-title class="titleClass">Protein</v-card-title>
-            <v-card-text class="subClass"
-              >Daily limit: {{ preferences[0].protein }}</v-card-text
-            >
-          </v-card>
-          <v-card class="cardClass carbsCard">
-            <v-card-title class="titleClass">Carbs</v-card-title>
-            <v-card-text class="subClass"
-              >Daily limit: {{ preferences[0].carbs }}</v-card-text
-            >
-          </v-card>
-          <v-card class="cardClass fatsCard">
-            <v-card-title class="titleClass">Fats</v-card-title>
-            <v-card-text class="subClass"
-              >Daily limit: {{ preferences[0].fats }}</v-card-text
-            >
-          </v-card>
+            <v-row class="scsr">
+              <v-card class="cardClass">
+                <v-card-title class="titleClass">Calories</v-card-title>
+                <v-card-text class="subClass"
+                  >Daily limit: {{ preferences[0].calories }}</v-card-text
+                >
+              </v-card>
+              <v-card class="cardClass proteinCard">
+                <v-card-title class="titleClass">Protein</v-card-title>
+                <v-card-text class="subClass"
+                  >Daily limit: {{ preferences[0].protein }}</v-card-text
+                >
+              </v-card>
+              <v-card class="cardClass carbsCard">
+                <v-card-title class="titleClass">Carbs</v-card-title>
+                <v-card-text class="subClass"
+                  >Daily limit: {{ preferences[0].carbs }}</v-card-text
+                >
+              </v-card>
+              <v-card class="cardClass fatsCard">
+                <v-card-title class="titleClass">Fats</v-card-title>
+                <v-card-text class="subClass"
+                  >Daily limit: {{ preferences[0].fats }}</v-card-text
+                >
+              </v-card>
+            </v-row>
+          </v-col>
         </v-row>
-      </v-col>
-    </v-row>
+      </v-container></v-form
+    >
     <v-row class="mx-5 px-5 justify-center" v-if="preferenceExists === true">
       <h4>
         If you wish to change your data please click on
@@ -109,6 +119,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      inputRules: [(v) => !!v || "No empty entries"],
       preferences: [],
 
       calories: "",
@@ -134,27 +145,31 @@ export default {
     },
 
     async putData() {
-      await axios.put(
-        "http://localhost:3000/userPreferences/?username=" + this.userName,
-        {
+      if (this.$refs.form.validate()) {
+        await axios.put(
+          "http://localhost:3000/userPreferences/?username=" + this.userName,
+          {
+            calories: this.calories,
+            protein: this.protein,
+            carbs: this.carbs,
+            fats: this.fats,
+          }
+        ),
+          this.countUpdate++;
+      }
+    },
+
+    async uploadData() {
+      if (this.$refs.form.validate()) {
+        await axios.post("http://localhost:3000/userPreferences/", {
+          username: this.userName,
           calories: this.calories,
           protein: this.protein,
           carbs: this.carbs,
           fats: this.fats,
-        }
-      ),
-        this.countUpdate++;
-    },
-
-    async uploadData() {
-      await axios.post("http://localhost:3000/userPreferences/", {
-        username: this.userName,
-        calories: this.calories,
-        protein: this.protein,
-        carbs: this.carbs,
-        fats: this.fats,
-      }),
-        this.countUpdate++;
+        }),
+          this.countUpdate++;
+      }
     },
     async getPreferences() {
       let response = await axios.get(

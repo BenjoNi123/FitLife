@@ -251,6 +251,15 @@
       "fats": "65",
       "date": "2020-09-30",
       "id": 32
+    },
+    {
+      "food": "a",
+      "calories": "1",
+      "protein": "1",
+      "carbs": "1",
+      "fats": "1",
+      "date": "2020-10-01",
+      "id": 33
     }
   ],
   "userPreferences": [
@@ -258,8 +267,8 @@
       "username": "test1",
       "calories": "3000",
       "protein": "250",
-      "carbs": "128",
-      "fats": "99",
+      "carbs": "180",
+      "fats": "75",
       "id": 1
     }
   ],

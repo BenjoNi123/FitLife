@@ -6,14 +6,16 @@
         <v-btn large rounded color="primary" dark v-on="on">Add Meal</v-btn>
       </template>
       <v-card>
-        <v-card-title>
-          <span class="headline justify-center">New Meal</span>
+        <v-card-title class="justify-center">
+          <span class="mx-5">Add a Meal</span>
         </v-card-title>
-        <v-card-text>
+        <v-divider></v-divider>
+        <v-form ref="form" class="ma-3 px-2">
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
+                  :rules="inputRules"
                   label="Name*"
                   v-model="foodName"
                   required
@@ -21,6 +23,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
+                  :rules="inputRules"
                   label="Calories"
                   v-model="calories"
                   hint="kg"
@@ -30,6 +33,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
+                  :rules="inputRules"
                   label="Protein"
                   v-model="protein"
                   hint="cc"
@@ -39,6 +43,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
+                  :rules="inputRules"
                   label="Carbs"
                   v-model="carbs"
                   hint="cc"
@@ -48,6 +53,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
+                  :rules="inputRules"
                   label="Fats"
                   v-model="fats"
                   hint="cc"
@@ -84,7 +90,7 @@
               </v-col>
             </v-row>
           </v-container>
-        </v-card-text>
+        </v-form>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="primary darken-1" text @click="dialog = false"
@@ -110,26 +116,30 @@ export default {
     protein: null,
     carbs: null,
     fats: null,
+    inputRules: [(v) => !!v || "No empty entries"],
   }),
 
   methods: {
     async save() {
-      await axios.post("http://localhost:3000/meals", {
-        food: this.foodName,
-        calories: this.calories,
-        protein: this.protein,
-        carbs: this.carbs,
-        fats: this.fats,
+      if (this.$refs.form.validate()) {
+        await axios.post("http://localhost:3000/meals", {
+          food: this.foodName,
+          calories: this.calories,
+          protein: this.protein,
+          carbs: this.carbs,
+          fats: this.fats,
 
-        date: this.date,
-      }),
-        (this.dialog = false);
-      this.$emit("onSaveComplete", true);
-      (this.foodName = ""),
-        (this.calories = ""),
-        (this.protein = ""),
-        (this.carbs = ""),
-        (this.fats = "");
+          date: this.date,
+        });
+
+        this.dialog = false;
+        this.$emit("onSaveComplete", true);
+        (this.foodName = ""),
+          (this.calories = ""),
+          (this.protein = ""),
+          (this.carbs = ""),
+          (this.fats = "");
+      }
     },
   },
 };
