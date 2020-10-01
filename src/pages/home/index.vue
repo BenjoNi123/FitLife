@@ -1,68 +1,70 @@
 <template>
   <div>
-    <div v-if="loginStatus">
-      <v-app class="homeCss">
-        <v-container class="containerClass">
-          <v-row class="firstRow">
-            <v-col lg="4" cols="6" sm="6" md="4">
-              <new-item @onSaveComplete="getMeals" class="mt-4"></new-item>
-            </v-col>
-            <v-col lg="4" cols="6" sm="6" md="4">
-              <div class="dateRow">
-                <v-menu
-                  v-model="menu2"
-                  color="primary lighten-1"
-                  :close-on-content-click="false"
-                  transition="scale-transition"
-                  offset-y
-                  min-width="290px"
+    <v-app class="homeCss">
+      <v-container class="containerClass">
+        <v-row class="firstRow">
+          <v-col lg="4" cols="6" sm="6" md="4">
+            <new-item @onSaveComplete="getMeals" class="mt-4"></new-item>
+          </v-col>
+          <v-col lg="4" cols="6" sm="6" md="4">
+            <div class="dateRow">
+              <v-menu
+                v-model="menu2"
+                color="primary lighten-1"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y
+                min-width="290px"
+              >
+                <template
+                  v-slot:activator="{ on: calendar }"
+                  class="dateTemplate"
                 >
-                  <template
-                    v-slot:activator="{ on, attrs }"
-                    class="dateTemplate"
+                  <v-tooltip bottom
+                    ><template v-slot:activator="{ on: tooltip }">
+                      <v-btn
+                        large
+                        color="primary"
+                        dark
+                        class="dateTextField"
+                        v-model="date"
+                        readonly
+                        v-on="{ ...calendar, ...tooltip }"
+                        rounded
+                        >Select Date</v-btn
+                      >
+                    </template>
+                    <span>Select a date to view its data</span></v-tooltip
                   >
-                    <v-btn
-                      large
-                      color="primary"
-                      dark
-                      class="dateTextField"
-                      v-model="date"
-                      readonly
-                      v-bind="attrs"
-                      v-on="on"
-                      rounded
-                      >Select Date</v-btn
-                    >
-                  </template>
-                  <v-date-picker
-                    color="primary lighten-1"
-                    v-model="date"
-                    @input="menu2 = false"
-                  ></v-date-picker>
-                </v-menu>
-              </div>
-            </v-col>
-          </v-row>
-
-          <v-row class="progressRow">
-            <progress-component
-              :meals="meals"
-              :preferences="userPreferences"
-            ></progress-component>
-          </v-row>
-          <v-row>
-            <div class="tableComponent">
-              <table-component
-                class="tableCss"
-                :showDate="date"
-                @onSaveComplete="getMeals"
-                :tableData="meals"
-              ></table-component>
+                </template>
+                <v-date-picker
+                  color="primary lighten-1"
+                  v-model="date"
+                  @input="menu2 = false"
+                ></v-date-picker>
+              </v-menu>
             </div>
-          </v-row>
-        </v-container>
-      </v-app>
-    </div>
+          </v-col>
+        </v-row>
+
+        <v-row class="progressRow">
+          <progress-component
+            :meals="meals"
+            :preferences="userPreferences"
+          ></progress-component>
+        </v-row>
+        <v-row>
+          <div class="tableComponent">
+            <table-component
+              class="tableCss"
+              :showDate="date"
+              @onSaveComplete="getMeals"
+              :tableData="meals"
+            ></table-component>
+          </div>
+        </v-row>
+      </v-container>
+    </v-app>
   </div>
 </template>
 

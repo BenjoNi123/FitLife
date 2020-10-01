@@ -2,8 +2,20 @@
 <template>
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
-      <template v-slot:activator="{ on }">
-        <v-btn large rounded color="primary" dark v-on="on">Add Meal</v-btn>
+      <template v-slot:activator="{ on: dialog }">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on: tooltip }">
+            <v-btn
+              large
+              rounded
+              color="primary"
+              dark
+              v-on="{ ...dialog, ...tooltip }"
+              >Add Meal</v-btn
+            >
+          </template>
+          <span>Click to add a meal</span></v-tooltip
+        >
       </template>
       <v-card>
         <v-card-title class="justify-center">
@@ -16,7 +28,7 @@
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   :rules="inputRules"
-                  label="Name*"
+                  label="Meal"
                   v-model="foodName"
                   required
                 ></v-text-field>
