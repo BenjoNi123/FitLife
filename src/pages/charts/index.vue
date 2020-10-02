@@ -20,7 +20,7 @@
         <v-col class="buttonClass">
           <v-tooltip bottom>
             <template v-slot:activator="{ on: tooltip }">
-              <v-btn v-on="{ ...tooltip }" @click="changeData" color="primary "
+              <v-btn v-on="{ ...tooltip }" @click="changeData" color="primary"
                 >ORIGINAL DATA</v-btn
               >
             </template>
@@ -29,7 +29,7 @@
         </v-col>
 
         <v-col>
-          <date-picker @datesArray="filterArray" :msg="dates"></date-picker>
+          <datePicker @datesArray="filterArray" :msg="dates"></datePicker>
         </v-col>
         <v-col class="buttonClass">
           <v-tooltip bottom>
@@ -54,7 +54,6 @@ import axios from "axios";
 import caloriesChart from "./caloriesChart";
 import stacksChart from "./stacksChart";
 import datePicker from "./datePicker";
-
 export default {
   components: { caloriesChart, stacksChart, datePicker },
   data() {

@@ -68,15 +68,15 @@ export default {
   watch: {
     dataSet(value) {
       if (value == true) {
-        am4core.disposeAllCharts();
         this.createChart(this.chartDataEdited);
-      } else this.createChart(this.randomMeals);
+      } else {
+        this.createChart(this.randomMeals);
+      }
     },
     chartDataEdited(value) {
       this.createChart(value);
     },
     randomMeals(value) {
-      am4core.disposeAllCharts();
       this.createChart(value);
     },
   },
