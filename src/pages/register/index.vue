@@ -1,13 +1,18 @@
 <template>
   <div class="container">
-    <v-row style="padding-bottom: 10%; text-align: center">
-      Welcome to Register
-      <br />PLease fill in your information
-    </v-row>
-    <v-alert v-if="error" type="error"
-      >Username: {{ userName }} is taken</v-alert
+    <v-card
+      min-width="45vw"
+      class="mx-auto px-10"
+      elevation="2"
+      outlined
+      shaped
     >
-    <v-row class="inputRow">
+      <v-card-title class="justify-center">Register</v-card-title>
+      <v-divider></v-divider>
+      <v-alert text dense v-if="error" type="error"
+        >Username: {{ userName }} is taken</v-alert
+      >
+
       <v-text-field
         label="Username"
         v-model="userName"
@@ -20,8 +25,8 @@
         type="password"
       ></v-text-field>
 
-      <v-btn @click="getUsers">Submit</v-btn>
-    </v-row>
+      <v-btn rounded block class="my-5" @click="getUsers">Submit</v-btn>
+    </v-card>
   </div>
 </template>
 
@@ -51,9 +56,7 @@ export default {
       }
     },
     async submitForm() {
-      let token = Math.random()
-        .toString(36)
-        .substring(2, 10);
+      let token = Math.random().toString(36).substring(2, 10);
       this.token = token;
       await axios.post("http://localhost:3000/Users", {
         username: this.userName,
@@ -70,15 +73,10 @@ export default {
 
 <style scoped>
 .container {
+  height: 80vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-.inputRow {
-  flex-direction: column;
-  width: 30%;
-  align-items: çenter;
-  height: 30vh;
 }
 </style>

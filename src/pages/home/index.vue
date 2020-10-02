@@ -109,10 +109,6 @@ export default {
           localStorage.getItem("userName")
       );
       this.userPreferences = response.data;
-
-      if (this.userPreferences.length < 1) {
-        this.$router.push({ path: `/myprofile` });
-      }
     },
   },
 
