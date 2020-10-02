@@ -260,6 +260,15 @@
       "fats": "1",
       "date": "2020-10-01",
       "id": 33
+    },
+    {
+      "food": "nananananananaaaa",
+      "calories": "1500",
+      "protein": "180",
+      "carbs": "202",
+      "fats": "55",
+      "date": "2020-10-02",
+      "id": 34
     }
   ],
   "userPreferences": [

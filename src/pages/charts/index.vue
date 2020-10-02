@@ -18,15 +18,31 @@
       </h2>
       <v-row class="dataControl">
         <v-col class="buttonClass">
-          <v-btn @click="changeData" color="primary ">ORIGINAL DATA</v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on: tooltip }">
+              <v-btn v-on="{ ...tooltip }" @click="changeData" color="primary "
+                >ORIGINAL DATA</v-btn
+              >
+            </template>
+            <span>Use User Data for charts</span>
+          </v-tooltip>
         </v-col>
+
         <v-col>
           <date-picker @datesArray="filterArray" :msg="dates"></date-picker>
         </v-col>
         <v-col class="buttonClass">
-          <v-btn @click="randomMealsGenerator" color="primary "
-            >RANDOMIZE DATA</v-btn
-          >
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on: tooltip }">
+              <v-btn
+                v-on="{ ...tooltip }"
+                @click="randomMealsGenerator"
+                color="primary "
+                >RANDOMIZE DATA</v-btn
+              >
+            </template>
+            <span>Generate Random Data for charts</span>
+          </v-tooltip>
         </v-col>
       </v-row>
     </div>
