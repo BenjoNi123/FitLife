@@ -59,11 +59,11 @@ export default {
     checkLogin(msg) {
       this.loginInfo = msg;
 
-      this.$router.push({ path: `/` });
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
       localStorage.userName = this.loginInfo[0].username;
       localStorage.setItem("token", this.loginInfo[0].token);
+      this.$router.push({ path: `/` });
     },
     loggedOut() {
       this.loginStatus = false;

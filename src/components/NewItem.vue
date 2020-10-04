@@ -6,6 +6,7 @@
         <v-tooltip bottom>
           <template v-slot:activator="{ on: tooltip }">
             <v-btn
+              active
               large
               rounded
               color="primary"

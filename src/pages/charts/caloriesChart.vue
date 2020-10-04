@@ -32,36 +32,39 @@ export default {
     },
   },
   beforeDestroy() {
-    am4core.disposeAllCharts();
+    if (this.chart) {
+      this.chart.dispose();
+    }
   },
+  mounted() {
+    let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
+    chart.paddingRight = 20;
+    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+    dateAxis.renderer.grid.template.location = 0;
 
+    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.title.text = "CALORIES";
+    valueAxis.tooltip.disabled = true;
+    valueAxis.renderer.minWidth = 35;
+    let series = chart.series.push(new am4charts.LineSeries());
+    series.dataFields.dateX = "date";
+    series.dataFields.valueY = "calories";
+    series.tooltipText = "{valueY.value}";
+    chart.cursor = new am4charts.XYCursor();
+    series.tooltip.getFillFromObject = false;
+    series.tooltip.background.fill = am4core.color("#fff");
+    series.tooltip.label.fill = am4core.color("#00");
+    var bullet = series.bullets.push(new am4charts.CircleBullet());
+    bullet.circle.stroke = am4core.color("#fff");
+    bullet.circle.strokeWidth = 2;
+    let scrollbarX = new am4charts.XYChartScrollbar();
+    scrollbarX.series.push(series);
+    chart.scrollbarX = scrollbarX;
+    this.chart = chart;
+  },
   methods: {
     createChart(value) {
-      let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
-      chart.paddingRight = 20;
-      chart.data = value;
-      let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-      dateAxis.renderer.grid.template.location = 0;
-
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.title.text = "CALORIES";
-      valueAxis.tooltip.disabled = true;
-      valueAxis.renderer.minWidth = 35;
-      let series = chart.series.push(new am4charts.LineSeries());
-      series.dataFields.dateX = "date";
-      series.dataFields.valueY = "calories";
-      series.tooltipText = "{valueY.value}";
-      chart.cursor = new am4charts.XYCursor();
-      series.tooltip.getFillFromObject = false;
-      series.tooltip.background.fill = am4core.color("#fff");
-      series.tooltip.label.fill = am4core.color("#00");
-      var bullet = series.bullets.push(new am4charts.CircleBullet());
-      bullet.circle.stroke = am4core.color("#fff");
-      bullet.circle.strokeWidth = 2;
-      let scrollbarX = new am4charts.XYChartScrollbar();
-      scrollbarX.series.push(series);
-      chart.scrollbarX = scrollbarX;
-      this.chart = chart;
+      this.chart.data = value;
     },
   },
 
