@@ -1,6 +1,6 @@
 <template>
-  <div class="mainDiv">
-    <div>
+  <div id="parent">
+    <div class="charts">
       <calories-chart
         :dataSet="dataSet"
         :randomMeals="randomMeals"
@@ -46,6 +46,11 @@
         </v-col>
       </v-row>
     </div>
+
+    <div class="sideBar">
+      <sidebar></sidebar>
+      <overlay></overlay>
+    </div>
   </div>
 </template>
 
@@ -54,8 +59,10 @@ import axios from "axios";
 import caloriesChart from "./caloriesChart";
 import stacksChart from "./stacksChart";
 import datePicker from "./datePicker";
+import sidebar from "../../components/sidebar";
+import overlay from "../../components/overlay";
 export default {
-  components: { caloriesChart, stacksChart, datePicker },
+  components: { caloriesChart, stacksChart, datePicker, sidebar, overlay },
   data() {
     return {
       meals: [],
