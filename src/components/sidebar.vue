@@ -6,8 +6,16 @@
   >
     <v-container class="fill-height">
       <v-row>
-        <v-btn v-if="!drawer" color="pink" dark @click.stop="drawer = !drawer">
-          Toggle
+        <v-btn
+          @click.stop="drawer = !drawer"
+          v-if="!drawer"
+          class="mx-2"
+          fab
+          dark
+          small
+          color="primary"
+        >
+          <v-icon dark> mdi-plus </v-icon>
         </v-btn>
       </v-row>
     </v-container>
@@ -19,7 +27,7 @@
       temporary
       right
     >
-      <v-list dense>
+      <v-list>
         <v-list-item
           class="sidebarItem"
           v-for="item in items"
@@ -27,7 +35,14 @@
           link
         >
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-btn
+              class="buttons white--text"
+              rounded
+              raised
+              text
+              @click="testRun(item.action)"
+              >{{ item.title }}</v-btn
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -43,13 +58,25 @@ export default {
       drawer: false,
       overlay: false,
       zIndex: 0,
-      items: [{ title: "Randomize Data" }, { title: "Original Data" }],
+      items: [
+        { title: "Randomize Data", action: "randomize" },
+        { title: "Original Data", action: "original" },
+      ],
     };
+  },
+  methods: {
+    testRun(action) {
+      this.$emit("do" + action);
+      console.log(action);
+    },
   },
 };
 </script>
 
 <style  scoped>
+.buttons:hover {
+  background-color: #1e88e5;
+}
 .sideclass {
   position: fixed;
   right: 0;
@@ -57,14 +84,14 @@ export default {
   z-index: 0;
 }
 .sidebarItem {
-  top: 50vh;
+  top: 45vh;
 }
 .containerClass {
   background-color: transparent;
 }
 .containerClass2 {
   background-color: transparent;
-  width: 25vw;
+  width: 10vw;
 }
 .drawerClass {
   background-color: rgba(0, 0, 0, 0.25);

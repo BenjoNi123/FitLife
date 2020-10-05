@@ -17,39 +17,17 @@
         Please pick two dates to filter chart data between them
       </h2>
       <v-row class="dataControl">
-        <v-col class="buttonClass">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on: tooltip }">
-              <v-btn v-on="{ ...tooltip }" @click="changeData" color="primary"
-                >ORIGINAL DATA</v-btn
-              >
-            </template>
-            <span>Use User Data for charts</span>
-          </v-tooltip>
-        </v-col>
-
         <v-col>
           <datePicker @datesArray="filterArray" :msg="dates"></datePicker>
-        </v-col>
-        <v-col class="buttonClass">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on: tooltip }">
-              <v-btn
-                v-on="{ ...tooltip }"
-                @click="randomMealsGenerator"
-                color="primary "
-                >RANDOMIZE DATA</v-btn
-              >
-            </template>
-            <span>Generate Random Data for charts</span>
-          </v-tooltip>
         </v-col>
       </v-row>
     </div>
 
     <div class="sideBar">
-      <sidebar></sidebar>
-      <overlay></overlay>
+      <sidebar
+        @dooriginal="changeData"
+        @dorandomize="randomMealsGenerator()"
+      ></sidebar>
     </div>
   </div>
 </template>
@@ -60,9 +38,9 @@ import caloriesChart from "./caloriesChart";
 import stacksChart from "./stacksChart";
 import datePicker from "./datePicker";
 import sidebar from "../../components/sidebar";
-import overlay from "../../components/overlay";
+
 export default {
-  components: { caloriesChart, stacksChart, datePicker, sidebar, overlay },
+  components: { caloriesChart, stacksChart, datePicker, sidebar },
   data() {
     return {
       meals: [],
