@@ -1,5 +1,5 @@
 <template>
-  <v-app class="test">
+  <v-app class="scrollControl">
     <v-app-bar app></v-app-bar>
     <v-main style="background-color: #f9f9f9">
       <v-container style="padding-top: 0" fluid>
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style>
-.test .v-application--wrap {
+.scrollControl .v-application--wrap {
   min-height: 91.9vh;
 }
 .maincss {
@@ -78,6 +78,7 @@ html {
   overflow: auto !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  background-color: #f9f9f9;
 }
 
 html::-webkit-scrollbar {
