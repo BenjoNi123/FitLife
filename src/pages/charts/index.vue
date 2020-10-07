@@ -1,33 +1,54 @@
 <template>
-  <div id="parent">
+  <div id="parent" @click="navOpen = false">
     <div class="charts">
-      <calories-chart
-        :dataSet="dataSet"
-        :randomMeals="randomMeals"
-        :datesBundle="datesbundle"
-        :chartData="sortedMeals"
-      ></calories-chart>
-      <stacks-chart
-        :dataSet="dataSet"
-        :randomMeals="randomMeals"
-        :datesBundle="datesbundle"
-        :chartData="sortedMeals"
-      ></stacks-chart>
-      <h2 style="text-align: center">
-        Please pick two dates to filter chart data between them
-      </h2>
-      <v-row class="dataControl">
+      <v-row class="chartRow">
         <v-col>
+          <calories-chart
+            :dataSet="dataSet"
+            :randomMeals="randomMeals"
+            :datesBundle="datesbundle"
+            :chartData="sortedMeals"
+          ></calories-chart>
+        </v-col>
+      </v-row>
+      <v-row class="chartRow">
+        <v-col>
+          <stacks-chart
+            :dataSet="dataSet"
+            :randomMeals="randomMeals"
+            :datesBundle="datesbundle"
+            :chartData="sortedMeals"
+          ></stacks-chart>
+        </v-col>
+      </v-row>
+
+      <h4 style="text-align: center">
+        Please pick two dates to filter chart data between them
+      </h4>
+      <v-row>
+        <v-col justify="center">
           <datePicker @datesArray="filterArray" :msg="dates"></datePicker>
         </v-col>
       </v-row>
     </div>
-
-    <div class="sideBar">
-      <sidebar
-        @dooriginal="changeData"
-        @dorandomize="randomMealsGenerator()"
-      ></sidebar>
+    <div>
+      <v-btn
+        small
+        color="primary"
+        v-if="!navOpen"
+        class="sidebarBtn"
+        @click.stop="navOpen = !navOpen"
+        fab
+      >
+        <v-icon dark> mdi-plus </v-icon></v-btn
+      >
+    </div>
+    <div>
+      <sidebarCharts
+        @changeData="randomOriginal"
+        :msg="value"
+        :open="navOpen"
+      ></sidebarCharts>
     </div>
   </div>
 </template>
@@ -37,17 +58,24 @@ import axios from "axios";
 import caloriesChart from "./caloriesChart";
 import stacksChart from "./stacksChart";
 import datePicker from "./datePicker";
-import sidebar from "../../components/sidebar";
+import sidebarCharts from "../../components/sidebarCharts";
 
 export default {
-  components: { caloriesChart, stacksChart, datePicker, sidebar },
+  components: {
+    caloriesChart,
+    stacksChart,
+    datePicker,
+    sidebarCharts,
+  },
   data() {
     return {
+      value: "",
       meals: [],
       randomMeals: [],
       datesbundle: [],
       dates: [],
       dataSet: true,
+      navOpen: false,
     };
   },
   computed: {
@@ -60,9 +88,12 @@ export default {
     this.getMeals(this.getUserPreferences());
   },
   methods: {
-    changeData() {
-      this.dataSet = true;
+    randomOriginal(msg) {
+      if (msg === "Original") {
+        this.dataSet = true;
+      } else this.randomMealsGenerator();
     },
+
     sumMeals(meals) {
       meals = meals.slice();
       let dates = new Set();
@@ -156,10 +187,18 @@ export default {
 </script>
 
 <style scoped>
-.dataControl {
+.chartRow {
   display: flex;
-  justify-content: space-around;
+  width: 100vw;
 }
+.sidebarBtn {
+  color: #1e88e5;
+  position: fixed;
+  right: 0;
+  top: 50vh;
+  z-index: 0;
+}
+
 .buttonClass {
   display: flex;
   justify-content: space-around;

@@ -1,4 +1,4 @@
-<template>
+<template >
   <div>
     <v-app class="homeCss">
       <v-container class="containerClass">
@@ -121,6 +121,9 @@ export default {
 </script>
 
 <style scoped>
+.v-application--wrap {
+  min-height: 91vh;
+}
 .homeCss {
   background-color: #f9f9f9;
 }

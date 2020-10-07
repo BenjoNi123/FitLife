@@ -7,8 +7,7 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Fit</span>
-        <span>Life</span>
+        <span class="font-weight-light">FitLife</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="loginStatus" @click="logOut">

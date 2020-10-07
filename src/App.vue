@@ -1,19 +1,13 @@
 <template>
-  <v-app
-    ><v-app-bar app></v-app-bar>
-    <v-main>
-      <v-container class="maincss" fluid>
+  <v-app class="test">
+    <v-app-bar app></v-app-bar>
+    <v-main style="background-color: #f9f9f9">
+      <v-container style="padding-top: 0" fluid>
         <navigation2
           @loggedOut="loggedOut"
           :loginInfo="loginInfo"
           :loginStatus="loginStatus"
         ></navigation2>
-
-        <!-- <navigation
-      @loggedOut="loggedOut"
-      :loginInfo="loginInfo"
-      :loginStatus="loginStatus"
-    ></navigation> -->
 
         <router-view
           @loginInfo="checkLogin"
@@ -73,8 +67,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.test .v-application--wrap {
+  min-height: 91.9vh;
+}
 .maincss {
-  padding: 0;
+  padding-top: 0px;
+}
+html {
+  overflow: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 </style>

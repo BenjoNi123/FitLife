@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     let chart = am4core.create("chartdiv", am4charts.XYChart);
-    //this.sortMyArray();
+    chart.responsive.enabled = true;
     chart.paddingRight = 20;
     //create AXES
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -122,6 +122,6 @@ export default {
 <style scoped>
 .hello {
   width: 100%;
-  height: 500px;
+  height: 37vh;
 }
 </style>

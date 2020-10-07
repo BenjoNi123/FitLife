@@ -41,7 +41,7 @@ export default {
     chart.paddingRight = 20;
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.renderer.grid.template.location = 0;
-
+    chart.responsive.enabled = true;
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.title.text = "CALORIES";
     valueAxis.tooltip.disabled = true;
@@ -57,9 +57,7 @@ export default {
     var bullet = series.bullets.push(new am4charts.CircleBullet());
     bullet.circle.stroke = am4core.color("#fff");
     bullet.circle.strokeWidth = 2;
-    let scrollbarX = new am4charts.XYChartScrollbar();
-    scrollbarX.series.push(series);
-    chart.scrollbarX = scrollbarX;
+
     this.chart = chart;
   },
   methods: {
@@ -90,6 +88,6 @@ export default {
 <style scoped>
 .hello {
   width: 100%;
-  height: 500px;
+  height: 37vh;
 }
 </style>
