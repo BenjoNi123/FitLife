@@ -248,8 +248,7 @@ export default {
   display: flex;
   flex-grow: 1 1 auto;
   justify-content: space-around;
-
-
+}
 .cardClass {
   display: flex;
   justify-content: space-between;
