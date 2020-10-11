@@ -62,7 +62,7 @@ export default {
         {
           title: "Dashboard",
           icon: "mdi-view-dashboard",
-          route: "/",
+          route: "/dashboard",
         },
         {
           title: "Charts",

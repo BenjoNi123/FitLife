@@ -12,10 +12,6 @@ import axios from "axios";
 const router = new VueRouter({
   mode: "history",
   routes: [{
-      path: "/",
-      redirect: require("/login").default
-    },
-    {
       path: "/dashboard",
       name: "home",
       component: Home,
