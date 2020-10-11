@@ -56,9 +56,7 @@ export default {
       }
     },
     async submitForm() {
-      let token = Math.random()
-        .toString(36)
-        .substring(2, 10);
+      let token = Math.random().toString(36).substring(2, 10);
       this.token = token;
       let dataPost = await axios.post(
         "https://fit-life-data.herokuapp.com/Users",
@@ -68,7 +66,9 @@ export default {
           token: this.token,
         }
       );
-      this.apiTest = dataPost.data;
+      this.apiTest = [dataPost.data];
+      console.log(this.apiTest);
+
       localStorage.token = this.token;
       localStorage.userName = this.userName;
       this.$emit("registerLogin", this.apiTest);

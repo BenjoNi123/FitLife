@@ -11,7 +11,7 @@
 
         <router-view
           @loginInfo="checkLogin"
-          @registerLogin="checkLogin"
+          @registerLogin="registerLogin"
           :loginStatus="loginStatus"
         ></router-view>
       </v-container>
@@ -50,11 +50,18 @@ export default {
     loginRefresh() {
       this.loginStatus = JSON.parse(localStorage.getItem("login"));
     },
+    registerLogin([msg]) {
+      this.checkLogin([msg]);
+    },
     checkLogin(msg) {
+      console.log(msg);
       this.loginInfo = msg;
+      console.log(this.loginInfo);
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
+
       localStorage.userName = this.loginInfo[0].username;
+
       localStorage.setItem("token", this.loginInfo[0].token);
       this.$router.push({ path: `/dashboard` });
     },
