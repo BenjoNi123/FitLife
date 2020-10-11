@@ -3,11 +3,11 @@
     <v-app-bar app></v-app-bar>
     <v-main style="background-color: #f9f9f9">
       <v-container style="padding-top: 0" fluid>
-        <navigation2
+        <navigation
           @loggedOut="loggedOut"
           :loginInfo="loginInfo"
           :loginStatus="loginStatus"
-        ></navigation2>
+        ></navigation>
 
         <router-view
           @loginInfo="checkLogin"
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import navigation2 from "../src/layouts/navigation2";
+import navigation from "../src/layouts/navigation";
 
 import axios from "axios";
 
-axios.interceptors.request.use(function(config) {
+axios.interceptors.request.use(function (config) {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers["access-token"] = token;
@@ -34,7 +34,7 @@ axios.interceptors.request.use(function(config) {
 
 export default {
   components: {
-    navigation2,
+    navigation,
   },
   data() {
     return {
