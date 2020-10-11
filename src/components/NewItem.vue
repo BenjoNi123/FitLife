@@ -135,7 +135,7 @@ export default {
   methods: {
     async save() {
       if (this.$refs.form.validate()) {
-        await axios.post("https://fit-life-data.herokuapp.com//meals", {
+        await axios.post("https://fit-life-data.herokuapp.com/meals", {
           food: this.foodName,
           calories: this.calories,
           protein: this.protein,
