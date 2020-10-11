@@ -11,6 +11,7 @@
 
         <router-view
           @loginInfo="checkLogin"
+          @registerLogin="checkLogin"
           :loginStatus="loginStatus"
         ></router-view>
       </v-container>
@@ -52,7 +53,6 @@ export default {
     },
     checkLogin(msg) {
       this.loginInfo = msg;
-
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
       localStorage.userName = this.loginInfo[0].username;
