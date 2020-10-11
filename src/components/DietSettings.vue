@@ -132,7 +132,7 @@ export default {
     };
   },
   computed: {
-    userName: function () {
+    userName: function() {
       return localStorage.getItem("userName");
     },
   },
@@ -147,7 +147,8 @@ export default {
     async putData() {
       if (this.$refs.form.validate()) {
         await axios.put(
-          "http://localhost:3000/userPreferences/?username=" + this.userName,
+          "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
+            this.userName,
           {
             calories: this.calories,
             protein: this.protein,
@@ -161,19 +162,23 @@ export default {
 
     async uploadData() {
       if (this.$refs.form.validate()) {
-        await axios.post("http://localhost:3000/userPreferences/", {
-          username: this.userName,
-          calories: this.calories,
-          protein: this.protein,
-          carbs: this.carbs,
-          fats: this.fats,
-        }),
+        await axios.post(
+          "https://fit-life-data.herokuapp.com/userPreferences/",
+          {
+            username: this.userName,
+            calories: this.calories,
+            protein: this.protein,
+            carbs: this.carbs,
+            fats: this.fats,
+          }
+        ),
           this.countUpdate++;
       }
     },
     async getPreferences() {
       let response = await axios.get(
-        "http://localhost:3000/userPreferences/?username=" + this.userName
+        "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
+          this.userName
       );
       this.preferences = response.data;
       if (this.preferences.length > 0) {
@@ -183,7 +188,8 @@ export default {
 
     dumpData() {
       axios.delete(
-        "http://localhost:3000/userPreferences/" + this.preferences[0].id
+        "https://fit-life-data.herokuapp.com/userPreferences/" +
+          this.preferences[0].id
       ),
         (this.preferenceExists = false);
     },
@@ -242,11 +248,7 @@ export default {
   display: flex;
   flex-grow: 1 1 auto;
   justify-content: space-around;
-  /*display: flex;
-  flex-grow: 1 1 auto;
-  max-width: 70%;
-  justify-content: space-between;*/
-}
+
 
 .cardClass {
   display: flex;

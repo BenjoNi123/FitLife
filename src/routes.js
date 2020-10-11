@@ -23,7 +23,7 @@ const router = new VueRouter({
       // eslint-disable-next-line no-unused-vars
       async beforeEnter(_to, _from, next) {
         let response = await axios.get(
-          "http://localhost:3000/userPreferences/?username=" +
+          "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
           localStorage.getItem("userName")
         );
 

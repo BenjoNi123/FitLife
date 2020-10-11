@@ -45,12 +45,15 @@ export default {
 
   methods: {
     async submitForm() {
-      let response = await axios.get("http://localhost:3000/Users/", {
-        params: {
-          username: this.userName,
-          password: this.password,
-        },
-      });
+      let response = await axios.get(
+        "https://fit-life-data.herokuapp.com/Users/",
+        {
+          params: {
+            username: this.userName,
+            password: this.password,
+          },
+        }
+      );
 
       this.apiTest = response.data;
       if (this.apiTest.length == 0) {

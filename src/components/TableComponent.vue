@@ -128,10 +128,10 @@ export default {
     },
 
     mealsArray: {
-      get: function () {
+      get: function() {
         return this.tableData;
       },
-      set: function () {
+      set: function() {
         return this.tableData;
       },
     },
@@ -160,7 +160,7 @@ export default {
 
     deleteItem(item) {
       this.item = item;
-      axios.delete("http://localhost:3000/meals/" + this.item.id);
+      axios.delete("https://fit-life-data.herokuapp.com/meals/" + this.item.id);
       this.$emit("onSaveComplete", true);
     },
 
@@ -174,7 +174,7 @@ export default {
 
     async save() {
       await axios.put(
-        "http://localhost:3000/meals/" + this.editedItem.id,
+        "https://fit-life-data.herokuapp.com/meals/" + this.editedItem.id,
         this.editedItem
       );
       this.dialog = false;

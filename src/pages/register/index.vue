@@ -46,7 +46,7 @@ export default {
   methods: {
     async getUsers() {
       let response = await axios.get(
-        "http://localhost:3000/Users/?username=" + this.userName
+        "https://fit-life-data.herokuapp.com/Users/?username=" + this.userName
       );
       let userTest = response.data;
       if (userTest == "") {
@@ -56,13 +56,18 @@ export default {
       }
     },
     async submitForm() {
-      let token = Math.random().toString(36).substring(2, 10);
+      let token = Math.random()
+        .toString(36)
+        .substring(2, 10);
       this.token = token;
-      let dataPost = await axios.post("http://localhost:3000/Users", {
-        username: this.userName,
-        password: this.password,
-        token: this.token,
-      });
+      let dataPost = await axios.post(
+        "https://fit-life-data.herokuapp.com/Users",
+        {
+          username: this.userName,
+          password: this.password,
+          token: this.token,
+        }
+      );
       this.apiTest = dataPost.data;
       localStorage.token = this.token;
       localStorage.userName = this.userName;

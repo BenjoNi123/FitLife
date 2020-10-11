@@ -1,4 +1,4 @@
-<template >
+<template>
   <div>
     <v-app class="homeCss">
       <v-container class="containerClass">
@@ -98,14 +98,14 @@ export default {
   methods: {
     async getMeals() {
       let response = await axios.get(
-        "http://localhost:3000/meals/?date=" + this.date
+        "https://fit-life-data.herokuapp.com/meals/?date=" + this.date
       );
       this.meals = response.data;
       this.$emit("progressUpdate", true);
     },
     async getUserPreferences() {
       let response = await axios.get(
-        "http://localhost:3000/userPreferences/?username=" +
+        "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
           localStorage.getItem("userName")
       );
       this.userPreferences = response.data;

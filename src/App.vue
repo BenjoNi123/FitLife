@@ -20,12 +20,11 @@
 </template>
 
 <script>
-//import navigation from "../src/layouts/navigation";
 import navigation2 from "../src/layouts/navigation2";
 
 import axios from "axios";
 
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(function(config) {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers["access-token"] = token;

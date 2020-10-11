@@ -122,7 +122,7 @@ export default {
           fats: fatsSum,
         });
       });
-      let result = summedCalories.sort(function (a, b) {
+      let result = summedCalories.sort(function(a, b) {
         var dateA = new Date(a.date);
         var dateB = new Date(b.date);
 
@@ -165,11 +165,15 @@ export default {
     },
 
     async getMeals() {
-      let response = await axios.get("http://localhost:3000/meals/");
+      let response = await axios.get(
+        "https://fit-life-data.herokuapp.com/meals/"
+      );
       this.meals = response.data;
     },
     async getUserPreferences() {
-      let response = await axios.get("http://localhost:3000/userPreferences/");
+      let response = await axios.get(
+        "https://fit-life-data.herokuapp.com/userPreferences/"
+      );
       this.userPreferences = response.data;
     },
   },
