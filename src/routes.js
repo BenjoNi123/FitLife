@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 import Home from "./pages/home";
-
 import MyProfile from "./pages/myprofile";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -14,6 +12,11 @@ import axios from "axios";
 const router = new VueRouter({
   mode: "history",
   routes: [{
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+    {
       path: "/",
       name: "home",
       component: Home,
@@ -44,11 +47,7 @@ const router = new VueRouter({
       name: "Register",
       component: Register,
     },
-    {
-      path: "/login",
-      name: "Login",
-      component: Login,
-    },
+
     {
       path: "/charts",
       name: "Charts",
