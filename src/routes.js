@@ -12,12 +12,11 @@ import axios from "axios";
 const router = new VueRouter({
   mode: "history",
   routes: [{
-      path: "/login",
-      name: "Login",
-      component: Login,
+      path: "/",
+      redirect: require("/login").default
     },
     {
-      path: "/",
+      path: "/dashboard",
       name: "home",
       component: Home,
       // eslint-disable-next-line no-unused-vars
@@ -41,6 +40,11 @@ const router = new VueRouter({
       path: "/myProfile",
       name: "myProfile",
       component: MyProfile,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
     },
     {
       path: "/register",

@@ -56,7 +56,7 @@ export default {
       localStorage.login = this.loginStatus;
       localStorage.userName = this.loginInfo[0].username;
       localStorage.setItem("token", this.loginInfo[0].token);
-      this.$router.push({ path: `/` });
+      this.$router.push({ path: `/dashboard` });
     },
     loggedOut() {
       this.loginStatus = false;
