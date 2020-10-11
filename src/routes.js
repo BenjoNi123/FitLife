@@ -31,7 +31,10 @@ const router = new VueRouter({
         }
       }
     },
-
+    {
+      path: "/",
+      redirect: "/login"
+    },
     {
       path: "/myProfile",
       name: "myProfile",

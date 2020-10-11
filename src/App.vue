@@ -50,12 +50,17 @@ export default {
     loginRefresh() {
       this.loginStatus = JSON.parse(localStorage.getItem("login"));
     },
+    /*  registerLogin(msg) {
+      this.checkLogin(msg);
+    }, */
     checkLogin(msg) {
       this.loginInfo = msg;
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
-      localStorage.userName = this.loginInfo[0].username;
-      localStorage.setItem("token", this.loginInfo[0].token);
+
+      localStorage.userName = this.loginInfo.username;
+
+      localStorage.setItem("token", this.loginInfo.token);
       this.$router.push({ path: `/dashboard` });
     },
     loggedOut() {
