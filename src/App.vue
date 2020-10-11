@@ -1,5 +1,5 @@
 <template>
-  <v-app class="scrollControl">
+  <v-app id="app" class="scrollControl">
     <v-app-bar app></v-app-bar>
     <v-main style="background-color: #f9f9f9">
       <v-container style="padding-top: 0" fluid>

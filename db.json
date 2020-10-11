@@ -274,10 +274,10 @@
   "userPreferences": [
     {
       "username": "test1",
-      "calories": "3000",
+      "calories": "3500",
       "protein": "250",
-      "carbs": "180",
-      "fats": "75",
+      "carbs": "110",
+      "fats": "55",
       "id": 1
     }
   ],
