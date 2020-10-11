@@ -66,7 +66,8 @@ export default {
           token: this.token,
         }
       );
-      this.apiTest = dataPost.data;
+      this.apiTest = [dataPost.data];
+      console.log(this.apiTest);
 
       localStorage.token = this.token;
       localStorage.userName = this.userName;
