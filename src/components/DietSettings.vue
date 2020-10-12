@@ -60,7 +60,7 @@
             </v-col>
 
             <v-row justify="center">
-              <v-btn @click="postOrPatch">Submit</v-btn>
+              <v-btn @click="postOrPatch(); snackbar=true" >Submit</v-btn>
             </v-row>
           </v-col>
           <v-col class="col2" v-else-if="preferenceExists === true">
@@ -111,6 +111,24 @@
         >Erase Data</v-btn
       >
     </v-row>
+    <v-snackbar
+      v-model="snackbar"
+    
+      :timeout="timeout"
+    >
+      {{ snackText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="primary"
+          text
+          v-bind="attrs"
+          @click="snackbar = false; doReroute()"
+        >
+          Dashboard
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -121,14 +139,15 @@ export default {
     return {
       inputRules: [(v) => !!v || "No empty entries"],
       preferences: [],
-
+      snackbar: false,
       calories: "",
       protein: "",
       carbs: "",
       fats: "",
-
+      timeout: 10000,
       preferenceExists: false,
       countUpdate: "",
+      snackText:"You should now proceed to Dashboard"
     };
   },
   computed: {
@@ -138,6 +157,9 @@ export default {
   },
 
   methods: {
+    doReroute(){
+      this.$router.push("/dashboard")
+    },
     postOrPatch() {
       if (this.preferenceExists == true) {
         this.putData();

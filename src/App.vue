@@ -50,20 +50,32 @@ export default {
     loginRefresh() {
       this.loginStatus = JSON.parse(localStorage.getItem("login"));
     },
-    registerLogin([msg]) {
-      this.checkLogin([msg]);
+    registerLogin(msg) {
+      this.checkLogin(msg);
     },
     checkLogin(msg) {
-      console.log(msg);
+
       this.loginInfo = msg;
-      console.log(this.loginInfo);
+    
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
 
       localStorage.userName = this.loginInfo[0].username;
 
       localStorage.setItem("token", this.loginInfo[0].token);
-      this.$router.push({ path: `/dashboard` });
+      this.loginRedirect()
+      
+    },
+    async loginRedirect(){
+      let response = await axios.get(
+          "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
+          localStorage.getItem("userName")
+        );
+
+        if (response.data.length < 1) {
+      this.$router.push({ path: `/myProfile` });
+      
+    } else this.$router.push({path: "/dashboard"})
     },
     loggedOut() {
       this.loginStatus = false;
