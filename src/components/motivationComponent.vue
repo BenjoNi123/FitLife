@@ -40,7 +40,7 @@ export default {
 
   methods: {
     async getQuotes() {
-      let response = await axios.get("http://localhost:3000/motivationQuotes/");
+      let response = await axios.get(window.baseUrl + "motivationQuotes/");
       this.quotesData = response.data;
     }
   },

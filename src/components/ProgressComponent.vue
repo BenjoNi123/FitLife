@@ -85,23 +85,23 @@ export default {
     calculateCalories() {
       this.calVal = this.calculateProgress(
         "calories",
-        this.preferences[0].calories
+        this.preferences.calories
       );
     },
     calculateProtein() {
       this.proteinVal = this.calculateProgress(
         "protein",
-        this.preferences[0].protein
+        this.preferences.protein
       );
     },
     calculateCarbs() {
       this.carbsVal = this.calculateProgress(
         "carbs",
-        this.preferences[0].carbs
+        this.preferences.carbs
       );
     },
     calculateFats() {
-      this.fatsVal = this.calculateProgress("fats", this.preferences[0].fats);
+      this.fatsVal = this.calculateProgress("fats", this.preferences.fats);
     },
   },
   watch: {

@@ -135,14 +135,15 @@ export default {
   methods: {
     async save() {
       if (this.$refs.form.validate()) {
-        await axios.post("https://fit-life-data.herokuapp.com/meals", {
-          food: this.foodName,
-          calories: this.calories,
-          protein: this.protein,
-          carbs: this.carbs,
-          fats: this.fats,
-
-          date: this.date,
+        await axios.post(window.baseUrl + "meals", {
+          meal: {
+            food: this.foodName,
+            calories: this.calories,
+            protein: this.protein,
+            carbs: this.carbs,
+            fats: this.fats,
+            date: this.date,
+          }
         });
 
         this.dialog = false;
