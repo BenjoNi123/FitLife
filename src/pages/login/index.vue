@@ -45,21 +45,22 @@ export default {
 
   methods: {
     async submitForm() {
-      let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/Users/",
-        {
-          params: {
-            username: this.userName,
-            password: this.password,
-          },
-        }
-      );
-
-      this.apiTest = response.data;
-      if (this.apiTest.length == 0) {
-        this.showAlert = true;
-      } else {
+      this.showAlert = false;
+      try {
+        let response = await axios.post(
+          window.baseUrl + "user_token/",
+          {
+            auth: {
+              username: this.userName,
+              password: this.password,
+            },
+          }
+        );
+        this.apiTest = response.data;
         this.$emit("loginInfo", this.apiTest);
+      } catch(err) {
+        this.showAlert = true;
+        console.log(err);
       }
     },
   },

@@ -45,13 +45,10 @@ export default {
 
   methods: {
     async getUsers() {
-      let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/Users/?username=" + this.userName
-      );
-      let userTest = response.data;
-      if (userTest == "") {
+      this.error = false;
+      try {
         this.submitForm();
-      } else {
+      } catch(err) {
         this.error = true;
       }
     },
@@ -59,18 +56,15 @@ export default {
       let token = Math.random().toString(36).substring(2, 10);
       this.token = token;
       let dataPost = await axios.post(
-        "https://fit-life-data.herokuapp.com/Users",
+        window.baseUrl + "user",
         {
-          username: this.userName,
-          password: this.password,
-          token: this.token,
+          user: {
+            username: this.userName,
+            password: this.password,
+          }
         }
       );
-      this.apiTest = [dataPost.data];
-
-
-      localStorage.token = this.token;
-      localStorage.userName = this.userName;
+      this.apiTest = dataPost.data;
       this.$emit("registerLogin", this.apiTest);
     },
   },

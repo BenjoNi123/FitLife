@@ -85,7 +85,7 @@ export default {
   },
 
   created() {
-    this.getMeals(this.getUserPreferences());
+    this.getMeals();
   },
   methods: {
     randomOriginal(msg) {
@@ -166,15 +166,9 @@ export default {
 
     async getMeals() {
       let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/meals/"
+        window.baseUrl + "meals"
       );
       this.meals = response.data;
-    },
-    async getUserPreferences() {
-      let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/userPreferences/"
-      );
-      this.userPreferences = response.data;
     },
   },
   watch: {

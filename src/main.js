@@ -6,7 +6,11 @@ import Vuetify from 'vuetify';
 import axios from 'axios';
 import Routes from './routes.js'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+window.baseUrl = (
+  document.URL.includes('localhost') || document.URL.includes('127.0.0.1')
+) ? "http://localhost:3000/" : "http://fit-life-backend.herokuapp.com/";
 
 Vue.use(Vuetify, {
   iconfont: 'mdi'

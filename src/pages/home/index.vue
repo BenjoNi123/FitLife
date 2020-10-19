@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       meals: [],
-      userPreferences: [],
+      userPreferences: {},
       date: new Date().toISOString().substr(0, 10),
       menu2: false,
     };
@@ -98,15 +98,14 @@ export default {
   methods: {
     async getMeals() {
       let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/meals/?date=" + this.date
+        window.baseUrl + "meals/?date=" + this.date
       );
       this.meals = response.data;
       this.$emit("progressUpdate", true);
     },
     async getUserPreferences() {
       let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
-          localStorage.getItem("userName")
+        window.baseUrl + "user_preference"
       );
       this.userPreferences = response.data;
     },

@@ -5,12 +5,13 @@ import MyProfile from "./pages/myprofile";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Charts from "./pages/charts";
+import axios from "axios";
 
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history",
   routes: [{
       path: "/dashboard",
       name: "home",
@@ -44,6 +45,37 @@ const router = new VueRouter({
     }
 
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'Register' &&
+    to.name !== 'myProfile'
+  ) {
+    if ((await axios.get(window.baseUrl + 'user_preference')).data) {
+      next();
+    } else {
+      next('myProfile');
+    }
+  } else {
+    next();
+  }
+});
+
+router.beforeEach(async (to, from, next) => {
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'Register'
+  ) {
+    if (localStorage.getItem('token')) {
+      next();
+    } else {
+      next('Login');
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

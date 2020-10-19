@@ -74,25 +74,25 @@
               <v-card class="cardClass">
                 <v-card-title class="titleClass">Calories</v-card-title>
                 <v-card-text class="subClass"
-                  >Daily limit: {{ preferences[0].calories }}</v-card-text
+                  >Daily limit: {{ preferences.calories }}</v-card-text
                 >
               </v-card>
               <v-card class="cardClass proteinCard">
                 <v-card-title class="titleClass">Protein</v-card-title>
                 <v-card-text class="subClass"
-                  >Daily limit: {{ preferences[0].protein }}</v-card-text
+                  >Daily limit: {{ preferences.protein }}</v-card-text
                 >
               </v-card>
               <v-card class="cardClass carbsCard">
                 <v-card-title class="titleClass">Carbs</v-card-title>
                 <v-card-text class="subClass"
-                  >Daily limit: {{ preferences[0].carbs }}</v-card-text
+                  >Daily limit: {{ preferences.carbs }}</v-card-text
                 >
               </v-card>
               <v-card class="cardClass fatsCard">
                 <v-card-title class="titleClass">Fats</v-card-title>
                 <v-card-text class="subClass"
-                  >Daily limit: {{ preferences[0].fats }}</v-card-text
+                  >Daily limit: {{ preferences.fats }}</v-card-text
                 >
               </v-card>
             </v-row>
@@ -138,7 +138,7 @@ export default {
   data() {
     return {
       inputRules: [(v) => !!v || "No empty entries"],
-      preferences: [],
+      preferences: {},
       snackbar: false,
       calories: "",
       protein: "",
@@ -169,13 +169,14 @@ export default {
     async putData() {
       if (this.$refs.form.validate()) {
         await axios.put(
-          "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
-            this.userName,
+          window.baseUrl + "user_preference",
           {
-            calories: this.calories,
-            protein: this.protein,
-            carbs: this.carbs,
-            fats: this.fats,
+            user_preference: {
+              calories: this.calories,
+              protein: this.protein,
+              carbs: this.carbs,
+              fats: this.fats,
+            }
           }
         ),
           this.countUpdate++;
@@ -185,13 +186,14 @@ export default {
     async uploadData() {
       if (this.$refs.form.validate()) {
         await axios.post(
-          "https://fit-life-data.herokuapp.com/userPreferences/",
+          window.baseUrl + "user_preference",
           {
-            username: this.userName,
-            calories: this.calories,
-            protein: this.protein,
-            carbs: this.carbs,
-            fats: this.fats,
+            user_preference: {
+              calories: this.calories,
+              protein: this.protein,
+              carbs: this.carbs,
+              fats: this.fats,
+            }
           }
         ),
           this.countUpdate++;
@@ -199,19 +201,17 @@ export default {
     },
     async getPreferences() {
       let response = await axios.get(
-        "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
-          this.userName
+        window.baseUrl + "user_preference"
       );
       this.preferences = response.data;
-      if (this.preferences.length > 0) {
+      if (this.preferences) {
         this.preferenceExists = true;
       }
     },
 
     dumpData() {
       axios.delete(
-        "https://fit-life-data.herokuapp.com/userPreferences/" +
-          this.preferences[0].id
+        window.baseUrl + "user_preference"
       ),
         (this.preferenceExists = false);
     },

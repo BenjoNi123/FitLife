@@ -5,7 +5,6 @@
       <v-container style="padding-top: 0" fluid>
         <navigation
           @loggedOut="loggedOut"
-          :loginInfo="loginInfo"
           :loginStatus="loginStatus"
         ></navigation>
 
@@ -27,7 +26,7 @@ import axios from "axios";
 axios.interceptors.request.use(function (config) {
   const token = localStorage.getItem("token");
   if (token) {
-    config.headers["access-token"] = token;
+    config.headers["Authorization"] = token;
   }
   return config;
 });
@@ -50,32 +49,23 @@ export default {
     loginRefresh() {
       this.loginStatus = JSON.parse(localStorage.getItem("login"));
     },
-    registerLogin(msg) {
-      this.checkLogin(msg);
+    registerLogin() {
+      this.$router.push({path: "/login"});
     },
-    checkLogin(msg) {
+    async checkLogin(msg) {
 
       this.loginInfo = msg;
     
       this.loginStatus = true;
       localStorage.login = this.loginStatus;
+      localStorage.setItem("token", this.loginInfo.jwt);
 
-      localStorage.userName = this.loginInfo[0].username;
+      localStorage.userName = (await axios.get(window.baseUrl + 'user')).data.username;
 
-      localStorage.setItem("token", this.loginInfo[0].token);
       this.loginRedirect()
-      
     },
     async loginRedirect(){
-      let response = await axios.get(
-          "https://fit-life-data.herokuapp.com/userPreferences/?username=" +
-          localStorage.getItem("userName")
-        );
-
-        if (response.data.length < 1) {
-      this.$router.push({ path: `/myProfile` });
-      
-    } else this.$router.push({path: "/dashboard"})
+      this.$router.push({path: "/dashboard"});
     },
     loggedOut() {
       this.loginStatus = false;

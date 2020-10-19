@@ -160,7 +160,7 @@ export default {
 
     deleteItem(item) {
       this.item = item;
-      axios.delete("https://fit-life-data.herokuapp.com/meals/" + this.item.id);
+      axios.delete(window.baseUrl + "meals/" + this.item.id);
       this.$emit("onSaveComplete", true);
     },
 
@@ -174,8 +174,10 @@ export default {
 
     async save() {
       await axios.put(
-        "https://fit-life-data.herokuapp.com/meals/" + this.editedItem.id,
-        this.editedItem
+        window.baseUrl + "meals/" + this.editedItem.id,
+        {
+          meal: this.editedItem
+        }
       );
       this.dialog = false;
       this.$emit("onSaveComplete", true);
